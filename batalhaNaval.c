@@ -36,5 +36,44 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
+    char coluna_tabuleiro[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+
+    char tabuleiro[10][10] = {0}; // Tabuleiro 10x10 inicializado com 0
+
+// Exemplo de posicionamento de navios (substitua pelos seus próprios valores)
+    tabuleiro[0][0] = 3; // Navio na posição A1
+    tabuleiro[0][1] = 3; // Navio na posição B1
+    tabuleiro[1][0] = 3; // Navio na posição A2
+    tabuleiro[1][1] = 3; // Navio na posição B2
+
+    // Posicionar as colunas do tabuleiro
+    printf("  ");
+    for (int i = 0; i < 10; i++) {
+        printf(" %c", coluna_tabuleiro[i]);
+    }
+
+    printf("\n");   
+  
+    // Exibição do tabuleiro
+    for (int i = 0; i < 10; i++) {
+        
+        if (i < 9) {
+            printf(" %d ", i + 1); // Exibe o número da linha com espaço extra para alinhamento
+        } else {
+
+        printf("%d ", i + 1); // Exibe o número da linha
+        }
+
+
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }   
+
+    
+
+    
+
     return 0;
 }
