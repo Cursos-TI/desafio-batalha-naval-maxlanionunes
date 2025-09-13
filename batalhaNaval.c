@@ -51,16 +51,24 @@ int main() {
   
     // Posicionamento dos navios
     // Posiciona um navio na diagonal no tabuleiro usando repetições
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < NAVIO; i++) {
         tabuleiro[i][i] = NAVIO; // Posiciona o navio na diagonal
     }       
  
 
     // Posiciona um navio na diagonal no tabuleiro usando repetições de trás para frente
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < NAVIO; i++) {
         tabuleiro[i][9 - i] = NAVIO; // Posiciona o navio na diagonal
     }
 
+    //Posiciona um navio na diagonal no tabuleiro usando repetições de trás para frente começando de baixo para cima
+    for (int i = 0; i < NAVIO; i++) {
+        tabuleiro[9 - i][9 - i] = NAVIO; // Posicion
+    }
+    //Posiciona um navio na diagonal no tabuleiro usando repetições começando de baixo para cima
+    for (int i = 0; i < NAVIO; i++) {
+        tabuleiro[9 - i][i] = NAVIO; // Posiciona o navio na diagonal
+    }   
 
     // Exibição do tabuleiro
     for (int i = 0; i < 10; i++) {
