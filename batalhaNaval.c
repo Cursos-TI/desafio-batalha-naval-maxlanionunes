@@ -37,14 +37,9 @@ int main() {
     // 0 0 1 0 0
 
     char coluna_tabuleiro[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-
     char tabuleiro[10][10] = {0}; // Tabuleiro 10x10 inicializado com 0
 
-// Exemplo de posicionamento de navios (substitua pelos seus próprios valores)
-    tabuleiro[0][0] = 3; // Navio na posição A1
-    tabuleiro[0][1] = 3; // Navio na posição B1
-    tabuleiro[1][0] = 3; // Navio na posição A2
-    tabuleiro[1][1] = 3; // Navio na posição B2
+    #define NAVIO 3 // Valor para representar um navio no tabuleiro
 
     // Posicionar as colunas do tabuleiro
     printf("  ");
@@ -54,6 +49,19 @@ int main() {
 
     printf("\n");   
   
+    // Posicionamento dos navios
+    // Posiciona um navio na diagonal no tabuleiro usando repetições
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[i][i] = NAVIO; // Posiciona o navio na diagonal
+    }       
+ 
+
+    // Posiciona um navio na diagonal no tabuleiro usando repetições de trás para frente
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[i][9 - i] = NAVIO; // Posiciona o navio na diagonal
+    }
+
+
     // Exibição do tabuleiro
     for (int i = 0; i < 10; i++) {
         
@@ -70,10 +78,6 @@ int main() {
         }
         printf("\n");
     }   
-
-    
-
-    
 
     return 0;
 }
