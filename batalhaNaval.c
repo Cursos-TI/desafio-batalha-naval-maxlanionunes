@@ -37,9 +37,13 @@ int main() {
     // 0 0 1 0 0
 
     char coluna_tabuleiro[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-    char tabuleiro[10][10] = {0}; // Tabuleiro 10x10 inicializado com 0
+    char tabuleiro[11][11] = {0}; // Tabuleiro 10x10 inicializado com 0
 
     #define NAVIO 3 // Valor para representar um navio no tabuleiro
+    #define CONE 1 // Valor para representar habilidade em cone
+    #define OCTAEDRO 8 // Valor para representar habilidade em octaedro
+    #define CRUZ 4 // Valor para representar habilidade em cruz
+    
 
     // Posicionar as colunas do tabuleiro
     printf("  ");
@@ -51,6 +55,7 @@ int main() {
   
     // Posicionamento dos navios
     // Posiciona um navio na diagonal no tabuleiro usando repetições
+    /*
     for (int i = 0; i < NAVIO; i++) {
         tabuleiro[i][i] = NAVIO; // Posiciona o navio na diagonal
     }       
@@ -69,6 +74,57 @@ int main() {
     for (int i = 0; i < NAVIO; i++) {
         tabuleiro[9 - i][i] = NAVIO; // Posiciona o navio na diagonal
     }   
+*/
+
+    // Posiciona figura de cone no tabuleiro
+    int centro_x = 0; // Centro do cone na linha 5 (índice 4)
+    int centro_y = 2; // Centro do cone na coluna 5 (índice 4)
+    int altura_cone = 3; // Altura do cone     
+    for (int i = 0; i < altura_cone; i++) {
+        for (int j = -i; j <= i; j++) {
+            int x = centro_x + i;
+            int y = centro_y + j;
+            if (x >= 0 && x < 10 && y >= 0 && y < 10) {
+                tabuleiro[x][y] = CONE; // Marca a área do cone
+            }
+          
+        }
+      
+    }
+
+// Posiciona figura de octaedro no tabuleiro
+    centro_x = 5; // Centro do octaedro na linha 5 (índice 4)
+    centro_y = 5; // Centro do octaedro na coluna 5 (índice 4)
+    int altura_octaedro = 2; // Altura do octaedro
+    for (int i = -altura_octaedro; i <= altura_octaedro; i++) {
+        for (int j = -altura_octaedro; j <= altura_octaedro; j++) {
+            if (abs(i) + abs(j) <= altura_octaedro) {
+                int x = centro_x + i;
+                int y = centro_y + j;
+                if (x >= 0 && x < 10 && y >= 0 && y < 10) {
+                    tabuleiro[x][y] = OCTAEDRO; // Marca a área do octaedro
+                }
+            }
+        }
+    }   
+
+    // Posiciona figura de cruz no tabuleiro
+    centro_x = 8; // Centro da cruz na linha 8 (índice 7)
+    centro_y = 2; // Centro da cruz na coluna 2 (índice 1)
+    int tamanho_cruz = 1; // Tamanho da cruz
+    for (int i = -tamanho_cruz; i <= tamanho_cruz; i++) {
+        int x1 = centro_x + i;
+        int y1 = centro_y;
+        int x2 = centro_x;
+        int y2 = centro_y + i;
+        if (x1 >= 0 && x1 < 10 && y1 >= 0 && y1 < 10) {
+            tabuleiro[x1][y1] = CRUZ; // Marca a área da cruz (linha)
+        }
+        if (x2 >= 0 && x2 < 10 && y2 >= 0 && y2 < 10) {
+            tabuleiro[x2][y2] = CRUZ; // Marca a área da cruz (coluna)
+        }
+    }
+
 
     // Exibição do tabuleiro
     for (int i = 0; i < 10; i++) {
